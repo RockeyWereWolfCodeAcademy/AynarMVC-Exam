@@ -11,5 +11,7 @@ namespace AynarMVC_Exam.Contexts
         }
 
         public DbSet<AppUser> Users { get; set; }
+
+        public DbSet<Team> Teams { get; set; }
     }
 }

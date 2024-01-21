@@ -95,7 +95,7 @@
                         <li><a class="nav-link" asp-action="Logout" asp-controller="Auth">Logout</a></li>
                         @if(User.IsInRole(nameof(Roles.Admin)))
                         {
-                            <li><a class="nav-link" asp-action="Index" asp-controller="Admin">Admin</a></li>
+                            <li><a class="nav-link text-danger" asp-action="Index" asp-controller="Admin">Admin</a></li>
                         }
                     } else
                     {

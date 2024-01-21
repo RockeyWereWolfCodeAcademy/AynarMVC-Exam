@@ -7,6 +7,8 @@
     <script src="~/admin/js/demo/datatables-demo.js"></script>
 }
 
+@model IEnumerable<AdminTeamListVM>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -21,30 +23,43 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Team Table</h6>
+            <a asp-action="Create" class="btn btn-outline-success">Create</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Name</th>
+                            <th>Surname</th>
                             <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Image</th>
+                            <th colspan="2" style="text-align:center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                        </tr>
+                        @if(!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="7" style="text-align:center">NO DATA</td>
+                            </tr>
+                        } else
+                        {
+                            foreach (var team in Model)
+                            {
+                                <tr>
+                                    <td>@team.Id</td>
+                                    <td>@team.Name</td>
+                                    <td>@team.Surname</td>
+                                    <td>@team.Position</td>
+                                    <td><img src="~/@team.ImgUrl" width="100" length="100"></td>
+                                    <td><a class="btn btn-outline-info" asp-action="Update" asp-route-id="@team.Id">Update</a></td>
+                                    <td><a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@team.Id">Delete</a></td>
+                                </tr>
+                            }
+                        }
                     </tbody>
                 </table>
             </div>

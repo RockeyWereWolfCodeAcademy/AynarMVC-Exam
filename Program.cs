@@ -41,4 +41,6 @@ app.MapControllerRoute(
 
 app.UseSeedData();
 
+PathConstants.RootPath = app.Environment.WebRootPath;
+
 app.Run();
