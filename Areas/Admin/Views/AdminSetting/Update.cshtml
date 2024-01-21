@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Settings Update";
+}
+
+@model AdminSettingVM
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Update</h6>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label asp-for="ContactEmail" class="form-label">ContactEmail</label>
+                    <input asp-for="ContactEmail" class="form-control" asp-for="ContactEmail">
+                    <span asp-validation-for="ContactEmail" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Street" class="form-label">Street</label>
+                    <input asp-for="Street" class="form-control" asp-for="Street">
+                    <span asp-validation-for="Street" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="City" class="form-label">City</label>
+                    <input asp-for="City" class="form-control" asp-for="City">
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="State" class="form-label">State</label>
+                    <textarea asp-for="State" class="form-control" asp-for="State"></textarea>
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label">PhoneNumber</label>
+                    <textarea asp-for="PhoneNumber" class="form-control" asp-for="PhoneNumber"></textarea>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="About" class="form-label">About</label>
+                    <textarea asp-for="About" class="form-control" asp-for="About"></textarea>
+                    <span asp-validation-for="About" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
