@@ -1,4 +1,5 @@
-﻿using AynarMVC_Exam.Helpers.Enums;
+﻿using AynarMVC_Exam.Exceptions;
+using AynarMVC_Exam.Helpers.Enums;
 using AynarMVC_Exam.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +39,7 @@ namespace AynarMVC_Exam.Helpers
                     {
                         sb.Append(error.Description + " ");
                     }
-                    throw new Exception(sb.ToString().TrimEnd());
+                    throw new RolesCreationFailedException(sb.ToString().TrimEnd());
                 }
             }
         }
@@ -57,7 +58,7 @@ namespace AynarMVC_Exam.Helpers
                 {
                     sb.Append(error.Description + " ");
                 }
-                throw new Exception(sb.ToString().TrimEnd());
+                throw new AdminUserCreationFailedException(sb.ToString().TrimEnd());
             }
             var roleResult = await userManager.AddToRoleAsync(admin, nameof(Roles.Admin));
             if (!roleResult.Succeeded)
@@ -67,7 +68,7 @@ namespace AynarMVC_Exam.Helpers
                 {
                     sb.Append(error.Description + " ");
                 }
-                throw new Exception(sb.ToString().TrimEnd());
+                throw new RoleAssignFailedException(sb.ToString().TrimEnd());
             }
         }
     }
