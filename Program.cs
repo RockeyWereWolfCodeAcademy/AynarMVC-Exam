@@ -1,6 +1,7 @@
 using AynarMVC_Exam.Contexts;
 using AynarMVC_Exam.Helpers;
 using AynarMVC_Exam.Models;
+using AynarMVC_Exam.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<AynarDbContext>(opt=>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("MSSql"));
 }).AddIdentity<AppUser, IdentityRole>().AddDefaultTokenProviders().AddEntityFrameworkStores<AynarDbContext>();
+
+builder.Services.AddScoped<LayoutService>();
 
 var app = builder.Build();
 
